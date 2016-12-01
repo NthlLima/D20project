@@ -6,11 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.*;
-import com.example.nathalia.d20project.AdpNovoPerson;
 
 public class PersonagemActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private AdpNovoPerson adpNP;
+    private AdapterPersonagem adpNP;
     private Button btnSalvar;
     private EditText editNome;
     private String nome;
@@ -25,7 +24,7 @@ public class PersonagemActivity extends AppCompatActivity implements View.OnClic
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        adpNP = new AdpNovoPerson(this);
+        adpNP = new AdapterPersonagem(this);
         editNome  = (EditText)findViewById(R.id.editNome);
         btnSalvar = (Button)findViewById(R.id.btnSalvar);
         btnSalvar.setOnClickListener(this);

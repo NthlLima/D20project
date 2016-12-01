@@ -27,6 +27,10 @@ public class DBAdapter {
         db.delete("Fichas", "_id = "+person.getId(), null);
     }
 
+    public Cursor loadFichas() {
+        final Cursor c = db.query("Fichas",null,null,null,null,null,null);
+        return c;
+    }
 
 
 }

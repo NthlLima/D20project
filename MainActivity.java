@@ -1,6 +1,7 @@
 package com.example.nathalia.d20project;
 
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,11 +17,15 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.nathalia.d20project.AdapterPersonagem;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private AdapterPersonagem adpP;
     private ListView listPerson;
     private ArrayAdapter<String> adpPersonagens;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +43,14 @@ public class MainActivity extends AppCompatActivity
         // Drawer Layout ^
 
 
-        listPerson = (ListView)findViewById(R.id.listPerson);
-        //adpPersonagens = this.ctrl.buscarLista(this);
-        listPerson.setAdapter(adpPersonagens);
+        adpP = new AdapterPersonagem(this);
+        listPerson = (ListView) findViewById(R.id.listPerson);
+        try {
+            adpPersonagens = this.adpP.criarLista(this);
+            listPerson.setAdapter(adpPersonagens);
+        }catch(SQLException ex){
 
-
-
+        }
 
     }
 
